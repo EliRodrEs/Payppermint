@@ -21,5 +21,4 @@ django-environ==0.11.2
 django-cors-headers==4.3.0
 Pillow==10.1.0
 coverage==7.2.7
-python-dotenv==0.21.0
-django-nose==1.4.7
+python-dotenv==1.0.1
