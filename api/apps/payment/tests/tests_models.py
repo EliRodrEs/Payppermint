@@ -1,7 +1,10 @@
 from django.test import TestCase
 from django.core.exceptions import ValidationError
-from apps.payment.models import Payment
+
 from decimal import Decimal
+
+from api.apps.payment.models import Payment
+
 
 class PaymentModelTest(TestCase):
     def setUp(self):

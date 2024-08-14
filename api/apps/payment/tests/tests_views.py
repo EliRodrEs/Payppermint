@@ -3,13 +3,16 @@ from decimal import Decimal
 from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
-from apps.payment.models import Payment
+
+from api.apps.payment.models import Payment
+
 
 class DecimalEncoder(json.JSONEncoder):
     def default(self, obj):
         if isinstance(obj, Decimal):
             return str(obj)
         return super(DecimalEncoder, self).default(obj)
+
 
 class PaymentViewsTest(TestCase):
     def setUp(self):
