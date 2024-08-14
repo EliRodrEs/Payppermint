@@ -71,10 +71,10 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 ## 📋 Lista de Tareas
 
 ### 🏗️ Infraestructura
-- [ ] Configura PostgreSQL con Docker:
+- [x] Configura PostgreSQL con Docker:
   - Crea un contenedor Docker para PostgreSQL
   - Configura las variables de entorno necesarias
-- [ ] Integra Django con PostgreSQL:
+- [x] Integra Django con PostgreSQL:
   - Modifica la configuración de Django para usar PostgreSQL
   - Realiza las migraciones necesarias
 
