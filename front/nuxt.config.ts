@@ -1,71 +1,69 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: { enabled: true },
+  ssr: false,
+  components: true,
 
-    devtools: { enabled: true },
+  modules: [
+      '@nuxtjs/i18n',
+      '@pinia/nuxt',
+      '@pinia-plugin-persistedstate/nuxt',
+  ],
 
-    ssr: false,
+  piniaPersistedstate: {
+      cookieOptions: {
+          sameSite: 'strict',
+      },
+      storage: 'cookies'
+  },
 
-    components: true,
+  nitro: {
+      preset: 'node-server',
+      inlineDynamicImports: true
+  },
 
-    modules: [
-        '@nuxtjs/i18n',
-        '@pinia/nuxt',
-        '@pinia-plugin-persistedstate/nuxt',
-    ],
+  i18n: {
+      strategy: 'no_prefix',
+      vueI18n: './i18n.config.ts',
+      detectBrowserLanguage: {
+          useCookie: false,
+      },
+      locales: [
+          {
+              code: 'en-us',
+              name: 'English (United States)'
+          },
+          {
+              code: 'es',
+              name: 'Español'
+          }
+      ]
+  },
 
-    piniaPersistedstate: {
-        cookieOptions: {
-            sameSite: 'strict',
-        },
-        storage: 'cookies'
-    },
+  app: {
+      head: {
+          link: [
+              {
+                  rel: 'stylesheet',
+                  href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
+              },
+              {
+                  rel: 'stylesheet',
+                  href: '/css/style.css'
+              }
+          ],
+          script: [
+              {
+                  src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
+                  body: true
+              },
+              {
+                  src: '/js/zexel-models.js',
+                  body: true
+              }
+          ]
+      }
+  },
 
-    nitro: {
-        preset: 'node-server',
-        inlineDynamicImports: true
-    },
-
-    i18n: {
-        strategy: 'no_prefix',
-        vueI18n: './i18n.config.ts',
-        detectBrowserLanguage: {
-            useCookie: false,
-        },
-        locales: [
-            {
-                code: 'en-us',
-                name: 'English (United States)'
-            },
-            {
-                code: 'es',
-                name: 'Español'
-            }
-        ]
-    },
-
-    app: {
-        head: {
-            link: [
-                {
-                    rel: 'stylesheet',
-                    href: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css'
-                },
-                {
-                    rel: 'stylesheet',
-                    href: '/css/style.css'
-                }
-            ],
-            script: [
-                {
-                    src: 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js',
-                    body: true
-                },
-                {
-                    src: '/js/zexel-models.js',
-                    body: true
-                }
-            ]
-        }
-    },
-
+  compatibilityDate: '2024-08-14',
 })
