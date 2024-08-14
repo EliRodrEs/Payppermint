@@ -4,7 +4,7 @@ from django.test import TestCase
 from django.urls import reverse
 from rest_framework import status
 
-from api.apps.payment.models import Payment
+from apps.payment.models import Payment
 
 
 class DecimalEncoder(json.JSONEncoder):

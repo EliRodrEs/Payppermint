@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 
 from decimal import Decimal
 
-from api.apps.payment.models import Payment
+from apps.payment.models import Payment
 
 
 class PaymentModelTest(TestCase):
