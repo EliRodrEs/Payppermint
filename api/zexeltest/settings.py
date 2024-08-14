@@ -16,7 +16,9 @@ import sys
 from pathlib import Path
 
 from corsheaders.defaults import default_headers
+from dotenv import load_dotenv
 
+load_dotenv()
 
 # Add the path to the 'api' directory
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -48,8 +50,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_spectacular',
-    'nose',
-    'django_nose',
     'apps.payment',
     'corsheaders', 
 ]
@@ -106,8 +106,12 @@ WSGI_APPLICATION = 'zexeltest.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASS"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT")
     }
 }
 
@@ -169,14 +173,6 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-NOSE_ARGS = [
-    '--verbosity=2',  # verbose output
-    '--with-xunit',  # enable XUnit plugin
-    '--with-coverage',
-    '--cover-package=apps.payment',
-]
-
-TEST_RUNNER = 'django_nose.NoseTestSuiteRunner'
 
 # Add this near the top of your settings.py
 print(INSTALLED_APPS)
