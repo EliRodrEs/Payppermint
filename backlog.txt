@@ -1,4 +1,3 @@
 * Add Rosetta to enable translations in the API.
-* Add translation to the frontend too.
-    This can take some time, but keeping in mind that we are exchanging currency from all over the world, it'll surely be worthy to invest in internationalization.
+* Consider split the translations for the front into different files to make the management easier. With one single file, we'll have problems once the app grows.
 
