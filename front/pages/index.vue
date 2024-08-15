@@ -11,12 +11,7 @@
     <div>
       <h2 class="h4 mb-3">{{ $t('main_functions') }}</h2>
       <div class="d-flex justify-content-between">
-        <NuxtLink to="/payments" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('payments') }}</div>
-        </NuxtLink>
-        <NuxtLink to="/countries" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('countries') }}</div>
-        </NuxtLink>
+
       </div>
     </div>
 
