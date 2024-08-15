@@ -2,6 +2,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;0,6..12,1000;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900;1,6..12,1000&display=swap");
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css");
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+
 :root {
     /* brand color */
     --zexel-admin-background: #a6e1ff;
@@ -85,4 +92,10 @@
 
 .close:hover {
     opacity: 1;
+}
+
+.sticky-top {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
 }

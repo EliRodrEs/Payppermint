@@ -3,6 +3,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: false,
   components: true,
+  
+  css: ['~/public/css/style.css'],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
 
   modules: [
       '@nuxtjs/i18n',
