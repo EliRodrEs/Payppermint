@@ -23,6 +23,12 @@
     --zexel-blackhole: #000000;
     --zexel-success-green: #2dce89;
     /* end brand color */
+    /* Alert colors */
+    --info-color: var(--zexel-azure);
+    --success-color: var(--zexel-success-green);
+    --error-color: var(--zexel-error);
+    --warning-color: #f59236;
+    --question-color: var(--zexel-placeholder);
 }
 
 * {
