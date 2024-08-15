@@ -7,8 +7,6 @@
 @tailwind utilities;
 
 
-
-
 :root {
     /* brand color */
     --zexel-admin-background: #a6e1ff;
@@ -92,10 +90,4 @@
 
 .close:hover {
     opacity: 1;
-}
-
-.sticky-top {
-    position: sticky;
-    top: 0;
-    z-index: 1020;
 }
