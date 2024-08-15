@@ -62,8 +62,6 @@
       {{ $t('no_payments') }}
     </div>
 
-    <Alert ref="alert" />
-
   </div>
 </template>
 
