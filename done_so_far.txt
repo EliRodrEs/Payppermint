@@ -1,3 +1,3 @@
 * Updated frontend dependencies to avoid problems with deprecations.
 * Removed nose from backend dependencies since one or more of its methods are deprecated from python.
-    TODO: Include a new testing library, probably unittest or pytest (bigger communities than nose2).
+* Add sweetAlert2 and create a function to handle alerts globally without using a component [See fireAlert.ts]

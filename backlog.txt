@@ -1,3 +1,4 @@
 * Add Rosetta to enable translations in the API.
 * Consider split the translations for the front into different files to make the management easier. With one single file, we'll have problems once the app grows.
+* We'll receive messages from the API that we can print on our alerts, BUT we need to keep in mind translations. We could include the most common status from the responses in our translations files and use those messages instead, as a solution.
 
