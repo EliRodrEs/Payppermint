@@ -72,8 +72,6 @@
       </form>
     </div>
 
-    <Alert ref="alert" />
-
   </div>
 </template>
 

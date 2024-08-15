@@ -49,8 +49,6 @@
       {{ $t('no_countries') }}
     </div>
 
-    <Alert ref="alert" />
-
   </div>
 </template>
 
