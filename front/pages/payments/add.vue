@@ -68,7 +68,21 @@
             <input type="text" class="form-control" id="receiverFullName" v-model="payment.receiver_full_name" required>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">{{ $t('submit') }}</button>
+
+        <div id="buttonHolder">
+          <button v-if="!isSendingPayment" type="submit" 
+          class="btn btn-primary w-full h-12 px-4 py-2 text-lg cursor-pointer 
+          bg-[var(--zexel-azure)] 
+          border-[var(--zexel-azure)]
+          disabled:bg-[var(--zexel-disabled)] 
+          disabled:border-[var(--zexel-disabled)]"
+          :disabled="!isFormValid">{{ $t('submit') }}</button>
+          
+          <div v-if="isSendingPayment" class="flex items-center justify-center w-full">
+            <Spinner />
+          </div>
+        </div>
+
       </form>
     </div>
 
@@ -76,9 +90,15 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, computed } from 'vue'
+import Spinner from '~/components/ui/Spinner.vue';
+import { fireAlert } from '~/ts/fireAlert';
+import { useI18n } from 'vue-i18n';
+import { validateField, validators } from './validators';
 
 const { t } = useI18n()
+
+const isSendingPayment = ref(false)
 
 const payment = ref({
   source_amount: null,
@@ -91,11 +111,27 @@ const payment = ref({
   sender_full_name: '',
   receiver_full_name: ''
 })
-const alert = ref(null)
+
+const isFormValid = computed(() => {
+  const {
+    source_amount, source_currency, source_country,
+    target_amount, target_currency, target_country,
+    concept, sender_full_name, receiver_full_name
+  } = payment.value
+
+  const fieldValues = {
+    source_amount, source_currency, source_country,
+    target_amount, target_currency, target_country,
+    concept, sender_full_name, receiver_full_name
+  }
+
+  return Object.keys(fieldValues).every(field => validateField(fieldValues[field], validators[field]))
+})
 
 const submitPayment = async () => {
+  isSendingPayment.value = true
+  
   try {
-    // Make an API call to submit the payment
     const response = await fetch('http://localhost:8000/api/payments/', {
       method: 'POST',
       headers: {
@@ -103,30 +139,40 @@ const submitPayment = async () => {
       },
       body: JSON.stringify(payment.value),
     });
+    
 
     if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
+      const errorData = await response.json()
+      const errorMessage = errorData?.source_amount?.[0] || t('failed_to_add_payment')
+      throw new Error(errorMessage);
     }
 
     const result = await response.json();
     console.log('Payment added:', result);
 
-    alert.value.message(t('payment_added_successfully'))
+    fireAlert({text:t('payment_added_successfully'), icon:'success'})
 
-    // Reset the form after successful submission
-    payment.value = {
-      source_amount: null,
-      source_currency: '',
-      source_country: '',
-      target_amount: null,
-      target_currency: '',
-      target_country: '',
-      concept: '',
-      sender_full_name: '',
-      receiver_full_name: ''
-    }
+    // resetPaymentValue()
+
   } catch (error) {
-    alert.value.error(t('error_adding_payment', { error: error.message }))
+    fireAlert({title: t('failed_to_add_payment'), text: t('error_adding_payment', {error: error.message}), icon:'error', showCancelButton: false, position:'top-end'})
+  } finally {
+    isSendingPayment.value = false
   }
 }
+
+function resetPaymentValue() {
+  payment.value = {
+        source_amount: null,
+        source_currency: '',
+        source_country: '',
+        target_amount: null,
+        target_currency: '',
+        target_country: '',
+        concept: '',
+        sender_full_name: '',
+        receiver_full_name: ''
+      }
+}
+
 </script>

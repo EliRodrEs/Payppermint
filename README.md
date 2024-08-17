@@ -85,7 +85,7 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 - Mejora Componente de Alerta:
   - [x] Crea un componente de alerta global reutilizable
   - [x] Implementa un sistema de colores para diferentes tipos de mensajes (error, éxito, información)
-  - [ ] Integra la visualización de mensajes de error provenientes de las APIs
+  - [x] Integra la visualización de mensajes de error provenientes de las APIs
 - Completa funcionalidades CRUD:
   - [ ] Implementa la funcionalidad de edición de pagos existentes
 - Optimiza campos ISO:
@@ -101,8 +101,8 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 
 ### 🔧 Backend
 - Refuerza validaciones en el modelo de Pagos:
-  - [ ] Implementa validación para asegurar que el monto sea positivo
-  - [ ] Verifica que los códigos de país sean ISO válidos
+  - [X] Implementa validación para asegurar que el monto sea positivo
+  - [X] Verifica que los códigos de país sean ISO válidos
   - [ ] Valida que los códigos de moneda sean ISO válidos
   - [ ] Asegúrate de que el país origen y destino sean diferentes
 - Optimiza Modelos:
