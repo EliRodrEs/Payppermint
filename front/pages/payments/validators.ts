@@ -26,6 +26,10 @@ export const isvalidISOCountryCode = (code: string): boolean => {
   return validISOCountryCodes.includes(code);
 };
 
+export const isSourceDifferentFromTarget = (sourceCountry: string, targetCountry: string): boolean => {
+  return sourceCountry !== targetCountry;
+};
+
 export const validators: Validators = {
   source_amount: [(value) => value !== null],
   source_currency: [

@@ -80,12 +80,12 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 
 ### 🎨 Frontend
 - Implementa Navbar:
-  - [x] Diseña y crea un navbar responsive con los enlaces principales
+  - [X] Diseña y crea un navbar responsive con los enlaces principales
   - [WIP] Reemplaza los botones de navegación existentes por el nuevo navbar
 - Mejora Componente de Alerta:
-  - [x] Crea un componente de alerta global reutilizable
-  - [x] Implementa un sistema de colores para diferentes tipos de mensajes (error, éxito, información)
-  - [x] Integra la visualización de mensajes de error provenientes de las APIs
+  - [X] Crea un componente de alerta global reutilizable
+  - [X] Implementa un sistema de colores para diferentes tipos de mensajes (error, éxito, información)
+  - [X] Integra la visualización de mensajes de error provenientes de las APIs
 - Completa funcionalidades CRUD:
   - [ ] Implementa la funcionalidad de edición de pagos existentes
 - Optimiza campos ISO:
@@ -103,14 +103,14 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 - Refuerza validaciones en el modelo de Pagos:
   - [X] Implementa validación para asegurar que el monto sea positivo
   - [X] Verifica que los códigos de país sean ISO válidos
-  - [ ] Valida que los códigos de moneda sean ISO válidos
-  - [ ] Asegúrate de que el país origen y destino sean diferentes
+  - [X] Valida que los códigos de moneda sean ISO válidos
+  - [X] Asegúrate de que el país origen y destino sean diferentes
 - Optimiza Modelos:
   - [ ] Revisa y ajusta los tipos de datos en los modelos para mayor eficiencia
 - Implementa Sistema de Cambio de Divisas:
   - [WIP] Integra una librería de conversión de divisas (ej. Forex-Python)
   - [ ] Crea un servicio para manejar las conversiones de moneda en tiempo real
 - Testing
-  - [x] Repara bug tests de cantidad negativa
+  - [X] Repara bug tests de cantidad negativa
 
 Estas tareas están diseñadas para que mejores la funcionalidad, usabilidad y robustez de la aplicación de gestión de pagos, abordando aspectos clave tanto en el frontend como en el backend.
