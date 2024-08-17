@@ -1,6 +1,5 @@
 <template>
   <div class="container mt-5 pt-4">
-
     <h1 class="display-4 mt-2 mb-4">{{ $t('payments') }}</h1>
 
     <div class="app-description-container text-center mb-5">
@@ -23,82 +22,16 @@
       </div>
     </div>
 
-    <div>
-      <h2>{{ $t('add_payments') }}</h2>
-      <form @submit.prevent="submitPayment">
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="sourceAmount" class="form-label">{{ $t('source_amount') }}</label>
-            <input type="number" class="form-control" id="sourceAmount" v-model="payment.source_amount" required>
-          </div>
-          <div class="col-md-4">
-            <label for="sourceCurrency" class="form-label">{{ $t('source_currency') }}</label>
-            <input type="text" class="form-control" id="sourceCurrency" v-model="payment.source_currency" required>
-          </div>
-          <div class="col-md-4">
-            <label for="sourceCountry" class="form-label">{{ $t('source_country') }}</label>
-            <input type="text" class="form-control" id="sourceCountry" v-model="payment.source_country" required>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="targetAmount" class="form-label">{{ $t('target_amount') }}</label>
-            <input type="number" class="form-control" id="targetAmount" v-model="payment.target_amount" required>
-          </div>
-          <div class="col-md-4">
-            <label for="targetCurrency" class="form-label">{{ $t('target_currency') }}</label>
-            <input type="text" class="form-control" id="targetCurrency" v-model="payment.target_currency" required>
-          </div>
-          <div class="col-md-4">
-            <label for="targetCountry" class="form-label">{{ $t('target_country') }}</label>
-            <input type="text" class="form-control" id="targetCountry" v-model="payment.target_country" required>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <div class="col-md-4">
-            <label for="concept" class="form-label">{{ $t('concept') }}</label>
-            <input type="text" class="form-control" id="concept" v-model="payment.concept" required>
-          </div>
-          <div class="col-md-4">
-            <label for="senderFullName" class="form-label">{{ $t('sender_full_name') }}</label>
-            <input type="text" class="form-control" id="senderFullName" v-model="payment.sender_full_name" required>
-          </div>
-          <div class="col-md-4">
-            <label for="receiverFullName" class="form-label">{{ $t('receiver_full_name') }}</label>
-            <input type="text" class="form-control" id="receiverFullName" v-model="payment.receiver_full_name" required>
-          </div>
-        </div>
-
-        <div id="buttonHolder">
-          <button v-if="!isSendingPayment" type="submit" 
-          class="btn btn-primary w-full h-12 px-4 py-2 text-lg cursor-pointer 
-          bg-[var(--zexel-azure)] 
-          border-[var(--zexel-azure)]
-          disabled:bg-[var(--zexel-disabled)] 
-          disabled:border-[var(--zexel-disabled)]"
-          :disabled="!isFormValid">{{ $t('submit') }}</button>
-          
-          <div v-if="isSendingPayment" class="flex items-center justify-center w-full">
-            <Spinner />
-          </div>
-        </div>
-
-      </form>
-    </div>
-
+    <PaymentForm :mode="formMode" :initialPayment="payment" @submit="handleSubmit" />
   </div>
 </template>
 
 <script setup>
-import { ref, computed } from 'vue'
-import Spinner from '~/components/ui/Spinner.vue';
-import { fireAlert } from '~/ts/fireAlert';
-import { useI18n } from 'vue-i18n';
-import { validateField, validators } from './validators';
+import { ref } from 'vue'
+import PaymentForm from './PaymentForm.vue';
+import { fireAlert } from '~/ts/fireAlert'
 
-const { t } = useI18n()
-
-const isSendingPayment = ref(false)
+const formMode = ref('add')
 
 const payment = ref({
   source_amount: null,
@@ -112,67 +45,54 @@ const payment = ref({
   receiver_full_name: ''
 })
 
-const isFormValid = computed(() => {
-  const {
-    source_amount, source_currency, source_country,
-    target_amount, target_currency, target_country,
-    concept, sender_full_name, receiver_full_name
-  } = payment.value
-
-  const fieldValues = {
-    source_amount, source_currency, source_country,
-    target_amount, target_currency, target_country,
-    concept, sender_full_name, receiver_full_name
-  }
-
-  return Object.keys(fieldValues).every(field => validateField(fieldValues[field], validators[field]))
-})
-
-const submitPayment = async () => {
-  isSendingPayment.value = true
-  
+const handleSubmit = async (paymentData) => {
   try {
-    const response = await fetch('http://localhost:8000/api/payments/', {
-      method: 'POST',
+    const endpoint = formMode.value === 'add' ? 'http://localhost:8000/api/payments/' : `http://localhost:8000/api/payments/${paymentData.id}/`;
+    const method = formMode.value === 'add' ? 'POST' : 'PUT';
+
+    const response = await fetch(endpoint, {
+      method,
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payment.value),
+      body: JSON.stringify(paymentData),
     });
-    
 
     if (!response.ok) {
-      const errorData = await response.json()
-      const errorMessage = errorData?.source_amount?.[0] || t('failed_to_add_payment')
+      const errorData = await response.json();
+      const errorMessage = errorData?.source_amount?.[0] || 'Failed to process payment';
       throw new Error(errorMessage);
     }
 
     const result = await response.json();
-    console.log('Payment added:', result);
+    console.log('Payment processed:', result);
 
-    fireAlert({text:t('payment_added_successfully'), icon:'success'})
+    fireAlert({ text: 'Payment processed successfully', icon: 'success' })
 
-    // resetPaymentValue()
+    resetPaymentValue();
 
   } catch (error) {
-    fireAlert({title: t('failed_to_add_payment'), text: t('error_adding_payment', {error: error.message}), icon:'error', showCancelButton: false, position:'top-end'})
-  } finally {
-    isSendingPayment.value = false
+    fireAlert({
+      title: 'Failed to process payment',
+      text: error.message,
+      icon: 'error',
+      showCancelButton: false,
+      position: 'top-end'
+    });
   }
 }
 
 function resetPaymentValue() {
   payment.value = {
-        source_amount: null,
-        source_currency: '',
-        source_country: '',
-        target_amount: null,
-        target_currency: '',
-        target_country: '',
-        concept: '',
-        sender_full_name: '',
-        receiver_full_name: ''
-      }
+    source_amount: null,
+    source_currency: '',
+    source_country: '',
+    target_amount: null,
+    target_currency: '',
+    target_country: '',
+    concept: '',
+    sender_full_name: '',
+    receiver_full_name: ''
+  }
 }
-
 </script>
