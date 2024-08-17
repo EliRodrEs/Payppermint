@@ -34,6 +34,7 @@ export default defineI18nConfig(() => ({
       payment_added_successfully: 'Pago agregado exitosamente',
       target_country: 'Pais de destino',
       source_country: 'Pais de origen',
+      failed_to_add_payment: 'El pago no pudo añadirse',
       error_adding_payment: 'Error al agregar el pago: {error}',
     },
     'en-us': {
@@ -66,6 +67,7 @@ export default defineI18nConfig(() => ({
       payment_added_successfully: 'Payment added successfully',
       target_country: 'Target country',
       source_country: 'Source country',
+      failed_to_add_payment: 'Payment not registered',
       error_adding_payment: 'Error adding payment: {error}',
     },
   },
