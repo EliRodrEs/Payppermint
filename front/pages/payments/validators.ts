@@ -15,28 +15,38 @@ interface Validators {
   receiver_full_name: ValidatorFunction<string>[];
 }
 
-export const isNonEmptyTrimmed = (value: string): boolean => value.trim() !== '';
+export const isNonEmptyTrimmed = (value: string): boolean =>
+  value.trim() !== "";
 
 export const isValidISOCurrencyCode = (code: string): boolean => {
-  return validISOCountryCodes.includes(code);
+  return validISOCurrencyCodes.includes(code);
 };
 
-export const isValidISOCode = (code: string): boolean => {
-  return validISOCurrencyCodes.includes(code);
+export const isvalidISOCountryCode = (code: string): boolean => {
+  return validISOCountryCodes.includes(code);
 };
 
 export const validators: Validators = {
   source_amount: [(value) => value !== null],
-  source_currency: [(value) => isNonEmptyTrimmed(value), isValidISOCurrencyCode],
-  source_country: [(value) => isNonEmptyTrimmed(value), isValidISOCode],
+  source_currency: [
+    (value) => isNonEmptyTrimmed(value),
+    isValidISOCurrencyCode,
+  ],
+  source_country: [(value) => isNonEmptyTrimmed(value), isvalidISOCountryCode],
   target_amount: [(value) => value !== null],
-  target_currency: [(value) => isNonEmptyTrimmed(value), isValidISOCurrencyCode],
-  target_country: [(value) => isNonEmptyTrimmed(value), isValidISOCode],
+  target_currency: [
+    (value) => isNonEmptyTrimmed(value),
+    isValidISOCurrencyCode,
+  ],
+  target_country: [(value) => isNonEmptyTrimmed(value), isvalidISOCountryCode],
   concept: [(value) => isNonEmptyTrimmed(value)],
   sender_full_name: [(value) => isNonEmptyTrimmed(value)],
   receiver_full_name: [(value) => isNonEmptyTrimmed(value)],
 };
 
-export const validateField = <T>(value: T, validators: ValidatorFunction<T>[]): boolean => {
-  return validators.every(validator => validator(value));
+export const validateField = <T>(
+  value: T,
+  validators: ValidatorFunction<T>[]
+): boolean => {
+  return validators.every((validator) => validator(value));
 };
