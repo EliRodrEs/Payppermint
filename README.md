@@ -89,8 +89,8 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 - Completa funcionalidades CRUD:
   - [ ] Implementa la funcionalidad de edición de pagos existentes
 - Optimiza campos ISO:
-  - [ ] Convierte los campos de país y moneda en selectores desplegables
-  - [ ] Asegúrate de que se envíen los códigos ISO correctos al backend
+  - [X] Convierte los campos de país y moneda en selectores desplegables
+  - [X] Asegúrate de que se envíen los códigos ISO correctos al backend
 - Mejora la Tabla de Pagos:
   - [ ] Añade filtros dinámicos por país y moneda
   - [ ] Implementa ordenación por columnas, incluyendo país y moneda
