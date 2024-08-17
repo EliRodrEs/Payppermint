@@ -1,5 +1,8 @@
 import uuid
+
+from django.core.validators import MinValueValidator
 from django.db import models
+
 
 class Payment(models.Model):
     STATUS_CHOICES = [
@@ -11,7 +14,8 @@ class Payment(models.Model):
     ]
 
     id = models.UUIDField(primary_key=True, unique=True, default=uuid.uuid4)
-    source_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
+    source_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0,
+                                        validators=[MinValueValidator(0, "Amount must be positive")]) #This validator prevents the wrong data to be added directly into the database
     source_currency = models.CharField(max_length=20)
     source_country = models.CharField(max_length=20)
     target_amount = models.DecimalField(max_digits=12, decimal_places=2, default=0)
