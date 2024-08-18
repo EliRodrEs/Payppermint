@@ -81,7 +81,7 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 ### 🎨 Frontend
 - Implementa Navbar:
   - [X] Diseña y crea un navbar responsive con los enlaces principales
-  - [WIP] Reemplaza los botones de navegación existentes por el nuevo navbar
+  - [X] Reemplaza los botones de navegación existentes por el nuevo navbar
 - Mejora Componente de Alerta:
   - [X] Crea un componente de alerta global reutilizable
   - [X] Implementa un sistema de colores para diferentes tipos de mensajes (error, éxito, información)
@@ -106,7 +106,7 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
   - [X] Valida que los códigos de moneda sean ISO válidos
   - [X] Asegúrate de que el país origen y destino sean diferentes
 - Optimiza Modelos:
-  - [ ] Revisa y ajusta los tipos de datos en los modelos para mayor eficiencia
+  - [X] Revisa y ajusta los tipos de datos en los modelos para mayor eficiencia
 - Implementa Sistema de Cambio de Divisas:
   - [WIP] Integra una librería de conversión de divisas (ej. Forex-Python)
   - [ ] Crea un servicio para manejar las conversiones de moneda en tiempo real
