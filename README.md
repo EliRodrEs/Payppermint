@@ -109,7 +109,7 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
   - [X] Revisa y ajusta los tipos de datos en los modelos para mayor eficiencia
 - Implementa Sistema de Cambio de Divisas:
   - [X] Integra una librería de conversión de divisas (ej. Forex-Python)
-  - [ ] Crea un servicio para manejar las conversiones de moneda en tiempo real
+  - [??] Crea un servicio para manejar las conversiones de moneda en tiempo real
 - Testing
   - [X] Repara bug tests de cantidad negativa
 

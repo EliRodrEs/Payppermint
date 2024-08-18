@@ -8,24 +8,6 @@
       <div class="divider"></div>
     </div>
 
-    <div>
-      <h2 class="h4 mb-3">{{ $t('main_functions') }}</h2>
-      <div class="d-flex justify-content-between">
-        <NuxtLink to="/countries" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('list_countries') }}</div>
-        </NuxtLink>
-        <NuxtLink to="/countries/search" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('search_countries') }}</div>
-        </NuxtLink>
-        <NuxtLink to="/countries/detail" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('detail_countries') }}</div>
-        </NuxtLink>
-        <NuxtLink to="/countries/edit" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('edit_countries') }}</div>
-        </NuxtLink>
-      </div>
-    </div>
-
     <div v-if="countries.length">
       <h2>{{ $t('countries_list') }}:</h2>
       <div class="table-responsive">

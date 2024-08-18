@@ -10,7 +10,7 @@ export default defineI18nConfig(() => ({
       app_disclaimer: 'Esta aplicación no se debe utilizar para fines de pago de servicios de manera oficial. Es solo para fines de evaluación de nivel de tecnologías en los procesos de selección de Zexel.',
       payments: 'Pagos',
       main_functions: 'Funciones principales',
-      list_payments: 'Listar pagos',
+      list_payments: 'Listado de pagos',
       add_payments: 'Agregar pago',
       search_payments: 'Buscar pagos',
       detail_payments: 'Detalle de pago',
