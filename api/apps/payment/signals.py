@@ -14,5 +14,4 @@ def update_target_amount(sender, instance, **kwargs):
                 instance.source_currency, instance.target_currency
             )
 
-    # Calculate the target amount
     instance.target_amount = round(instance.source_amount * Decimal(instance.rate_exchange), 2)
