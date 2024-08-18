@@ -5,7 +5,6 @@ from forex_python.converter import CurrencyRates, CurrencyCodes
 
 logger = logging.getLogger(__name__)
 
-
 class CurrencyConverterService:
     def __init__(self, currency_rates: CurrencyRates, currency_codes: CurrencyCodes):
         self.currency_rates = currency_rates
@@ -30,3 +29,9 @@ class CurrencyConverterService:
             return self.currency_codes.get_symbol(currency_code)
         except Exception as ex:
             logger.error(f"Error getting currency symbol -> {ex}")
+
+
+# ? Singleton approach
+currency_rates = CurrencyRates()
+currency_codes = CurrencyCodes()
+currency_converter_service = CurrencyConverterService(currency_rates, currency_codes)
