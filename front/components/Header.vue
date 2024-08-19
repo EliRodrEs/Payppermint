@@ -21,9 +21,6 @@
           <NuxtLink to="/payments/add" class="block px-4 py-2 hover:bg-[var(--zexel-success)] hover:text-[var(--zexel-pure-white)]">
             {{ $t('add_payments') }}
           </NuxtLink>
-          <NuxtLink to="/payments/edit" class="block px-4 py-2 hover:bg-[var(--zexel-success)] hover:text-[var(--zexel-pure-white)]">
-            {{ $t('edit_payments') }}
-          </NuxtLink>
         </div>
       </div>
       
@@ -41,9 +38,6 @@
           </NuxtLink>
           <NuxtLink to="/countries/detail" class="block px-4 py-2 hover:bg-[var(--zexel-success)] hover:text-[var(--zexel-pure-white)]">
             {{ $t('detail_country') }}
-          </NuxtLink>
-          <NuxtLink to="/countries/edit" class="block px-4 py-2 hover:bg-[var(--zexel-success)] hover:text-[var(--zexel-pure-white)]">
-            {{ $t('edit_country') }}
           </NuxtLink>
         </div>
       </div>

@@ -8,9 +8,6 @@
         <NuxtLink to="/payments/add" class="btn btn-corporate flex-fill m-2 p-2">
           <div class="h5">{{ $t('add_payments') }}</div>
         </NuxtLink>
-        <NuxtLink to="/payments/edit" class="btn btn-corporate flex-fill m-2 p-2">
-          <div class="h5">{{ $t('edit_payments') }}</div>
-        </NuxtLink>
       </div>
     </div>
   </template>

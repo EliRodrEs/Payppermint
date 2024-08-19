@@ -36,7 +36,7 @@ const payment = ref({
 const route = useRoute()
 
 onMounted(async () => {
-  const paymentId = route.params.id
+  const paymentId = route.query.id
   if (!paymentId) {
     fireAlert({
       title: 'Error',
@@ -47,7 +47,11 @@ onMounted(async () => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8000/api/payments/${paymentId}/`)
+    
+    const response = await fetch(`http://localhost:8000/api/payments/${paymentId}/`, {
+      method: 'GET'
+    })
+    
     if (!response.ok) {
       const errorData = await response.json()
       const errorMessage = errorData?.source_amount?.[0] || 'Failed to fetch payment details'
@@ -55,6 +59,7 @@ onMounted(async () => {
     }
 
     const result = await response.json()
+    
     payment.value = result
   } catch (error) {
     fireAlert({
