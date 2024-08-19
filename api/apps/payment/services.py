@@ -32,6 +32,3 @@ class CurrencyConverterService:
 
 
 # ? Singleton approach
-currency_rates = CurrencyRates()
-currency_codes = CurrencyCodes()
-currency_converter_service = CurrencyConverterService(currency_rates, currency_codes)
