@@ -128,7 +128,6 @@ const payment = ref({ ...props.initialPayment })
 const isSendingPayment = ref(false)
 const validationErrors = ref({})
 
-// Watch for changes in the initialPayment prop and update the local payment ref
 watch(() => props.initialPayment, (newVal) => {
   payment.value = { ...newVal }
 }, { immediate: true })

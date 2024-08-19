@@ -34,7 +34,7 @@ const handleSubmit = async (paymentData) => {
   try {
     const endpoint = formMode.value === 'add' ? 'http://localhost:8000/api/payments/' : `http://localhost:8000/api/payments/${paymentData.id}/`;
     const method = formMode.value === 'add' ? 'POST' : 'PUT';
-
+  
     const response = await fetch(endpoint, {
       method,
       headers: {
