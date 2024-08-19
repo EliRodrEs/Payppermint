@@ -97,7 +97,7 @@
 
 <script setup>
 import { ref, computed, defineProps, defineEmits } from 'vue'
-import Spinner from '~/components/ui/Spinner.vue';
+import Spinner from '../../components/ui/Spinner.vue';
 import { validateField, validators, isValidISOCurrencyCode, isvalidISOCountryCode } from './validators'
 import { countryOptions } from './validISOCountryCodes'
 import { currencyOptions } from './validISOCurrencyCodes';

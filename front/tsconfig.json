@@ -3,10 +3,11 @@
   "compilerOptions": {
     "target": "es5",
     "lib": ["es5", "dom"],
-    "types": ["cypress", "node"]
+    "types": ["cypress", "node"],
+    "preserveValueImports": false
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "cypress.config.mjs"],
   "module": "commonjs",
   "moduleResolution": "node",
-  "preserveValueImports": false
+
 }

@@ -5,9 +5,9 @@ import {
     isSourceDifferentFromTarget,
     validators,
     validateField,
-  } from './validators';
-  import { validISOCountryCodes } from './validISOCountryCodes';
-  import { validISOCurrencyCodes } from './validISOCurrencyCodes';
+  } from '../validators';
+  import { validISOCountryCodes } from '../validISOCountryCodes';
+  import { validISOCurrencyCodes } from '../validISOCurrencyCodes';
   
   describe('Validators Module', () => {
     describe('isNonEmptyTrimmed', () => {
