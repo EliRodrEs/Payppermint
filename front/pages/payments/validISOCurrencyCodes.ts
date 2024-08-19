@@ -1,4 +1,4 @@
-export const validISOCurrencyCodes: String[] = [
+export const validISOCurrencyCodes: string[] = [
   'AED', 'AFN', 'ALL', 'AMD', 'ANG', 'AOA', 'ARS', 'AUD', 'AWG', 'AZN', 'BAM', 'BBD', 'BDT',
   'BGN', 'BHD', 'BIF', 'BMD', 'BND', 'BOB', 'BRL', 'BSD', 'BTN', 'BWP', 'BYN', 'BZD', 'CAD',
   'CDF', 'CHF', 'CLP', 'CNY', 'COP', 'CRC', 'CUP', 'CV', 'CZK', 'DJF', 'DKK', 'DOP', 'DZD',

@@ -97,7 +97,7 @@ Para más detalles sobre la implementación y cómo ejecutar el proyecto, consul
 - Implementa selección de idioma:
   - [ ] Añade un selector de idioma en el navbar o en una ubicación prominente
 - Testing
-  - [ ] Implementa tests unitarios y de integración con Cypress
+  - [WIP] Implementa tests unitarios y de integración con Cypress
 
 ### 🔧 Backend
 - Refuerza validaciones en el modelo de Pagos:
